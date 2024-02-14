@@ -13,6 +13,18 @@ class WelcomeViewController: UIViewController {
     
     @IBOutlet weak var titleLabel: UILabel!
     
+    //runs just before the view appears on the screen
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        navigationController?.isNavigationBarHidden = true
+    }
+    
+    //runs just before the view disappears on the screen
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        navigationController?.isNavigationBarHidden = false
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         //        titleLabel.text = "⚡️FlashChat"
