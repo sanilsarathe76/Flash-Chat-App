@@ -27,16 +27,21 @@ class WelcomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //        titleLabel.text = "⚡️FlashChat"
-        
+//        titleLabel.text = "⚡️FlashChat"
         titleLabel.text = ""
-        var charIndex = 0.0
-        let titleText = K.appName
-        titleText.forEach { letter in
-//            print("-----------------")
-//            print(0.2 * charIndex)
-            Timer.scheduledTimer(withTimeInterval: 0.1 * charIndex, repeats: false) { timer in
-                self.titleLabel.text?.append(letter)
+        var charIndex = 0
+        let titleText = Array(K.appName)
+//        titleText.forEach { letter in
+//            Timer.scheduledTimer(withTimeInterval: 0.1 * charIndex, repeats: false) { timer in
+//                self.titleLabel.text?.append(letter)
+//            }
+//            charIndex += 1
+//        }
+        Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { timer in
+            if charIndex >= 10 {
+                timer.invalidate()
+            } else {
+                self.titleLabel.text?.append(titleText[charIndex])
             }
             charIndex += 1
         }
